@@ -1,7 +1,7 @@
 from collections import Counter
 from typing import Literal
 
-from torchtext.vocab import vocab
+from torchtext.vocab import Vocab as vocab
 
 from .tree import RSTTree
 
