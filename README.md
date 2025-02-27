@@ -1,5 +1,23 @@
 # RST Parsing with Llama2
 
+### 아드바크 버전 설명
+반드시 data/rstdt에 test.json, valid.json, train.json 파일이 있어야 합니다.     
+```
+$ python src/preprocess.py --corpus rstdt --save_dir preprocessed_data
+```
+실행 시 preprocessed_data/rstdt에 train, test, valid 폴더가 생성됩니다.     
+각 폴더 안에는 span, nuc, rel, rel_with_nuc, top_down 파일이 생성됩니다.        
+train은 우선 생략합니다.        
+(생성된 파일들 활용하여, 각 단계별 agent를 few-shot하든지 fine-tuning하든지 해야 합니다.)
+
+**[TODO]**      
+중요한 것은 test인데..      
+원본 코드에서 llama 사용하는 부분을 전부 우리 모델로 바꿔줘야 합니다.       
+그래야 점수를 측정할 수 있습니다.
+
+---
+
+
 Implementation of "Can we obtain significant success in RST discourse parsing by using Large Language Models?" accepted in the main conference of EACL 2024. Our main parser, which fine-tuned Llama 2 (70B) with QLoRA based on the prompts, significantly outperformed current state-of-the-art parsers for three benchmark datasets, RST-DT, Instr-DT, and the GUM corpus.
 
 **Paper**: [[arXiv]](https://arxiv.org/abs/2403.05065), [[EACL 2024]](https://aclanthology.org/2024.eacl-long.171/)

@@ -17,12 +17,14 @@ class Config(Tap):
 
 
 def main(config: Config):
+    print(f"Preprocessing {config.corpus} data...")
     file_names = {
         "train": config.train_file_name,
         "valid": config.valid_file_name,
         "test": config.test_file_name,
     }
     for split, file_name in file_names.items():
+        print(f"Preprocessing {split} data...")
         # preprocess
         raw_data = json.load(
             open(os.path.join(config.data_dir, config.corpus, file_name))

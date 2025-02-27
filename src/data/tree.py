@@ -92,18 +92,46 @@ class RSTTree(Tree):
 
     @classmethod
     def check_relation(cls, tree: Tree, relation_vocab: Vocab):
+        # 1. 기본 타입 검증
+        if not isinstance(relation_vocab, Vocab):
+            print("relation_vocab이 Vocab 타입이 아닙니다.")
+            return False
+            
+        if not hasattr(relation_vocab, 'stoi'):
+            print("relation_vocab에 stoi 속성이 없습니다.")
+            return False
+        
+        # 관계 목록 미리 준비 (대소문자 구분 없이 비교하기 위해)
+        valid_relations = set(k.lower() for k in relation_vocab.stoi.keys())
+        valid_relations.add('span')  # span은 항상 유효한 관계
+            
         for tp in tree.treepositions():
-            node = tree[tp]
-            if not isinstance(node, RSTTree):
-                continue
+            try:
+                node = tree[tp]
+                if not isinstance(node, RSTTree):
+                    continue
 
-            label = node.label()
-            if label in ["ROOT", "text"]:
-                continue
+                label = node.label()
+                if label in ["ROOT", "text"]:
+                    continue
 
-            nuc, rel = label.split(":", maxsplit=1)
-            if rel not in relation_vocab and rel != "span":
-                print(rel)
+                # 안전한 레이블 파싱
+                if ":" not in label:
+                    print(f"잘못된 레이블 형식: {label}")
+                    return False
+                    
+                nuc, rel = label.split(":", maxsplit=1)
+                
+                # 2. 관계 정규화
+                # 하이픈이 있는 경우 첫 부분만 사용 (예: "elaboration-additional" -> "elaboration")
+                normalized_rel = rel.split('-')[0].lower()
+                
+                # 3. 안전한 조회
+                if normalized_rel not in valid_relations and rel.lower() not in valid_relations:
+                    print(f"알 수 없는 관계: {rel}, 정규화된 관계: {normalized_rel}")
+                    return False
+            except Exception as e:
+                print(f"위치 {tp} 처리 중 예외 발생: {type(e).__name__}: {str(e)}")
                 return False
 
         return True

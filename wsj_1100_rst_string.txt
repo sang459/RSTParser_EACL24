@@ -1,0 +1,1 @@
+(ROOT (nucleus:span (nucleus:span (satellite:attribution (text 0)) (nucleus:span (text 1))) (satellite:elaboration-additional (text 2))) (satellite:elaboration-additional (nucleus:same-unit (nucleus:span (text 3)) (satellite:elaboration-additional-e (text 4))) (nucleus:same-unit (text 5))))

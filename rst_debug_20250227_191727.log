@@ -1,0 +1,10 @@
+[19:17:27] 디버깅 시작
+[19:17:27] 데이터 로드 중...
+[19:17:27] 문서 wsj_1100 로드 완료
+[19:17:27] RST 트리 문자열 저장 중...
+[19:17:27] 전체 디버깅 과정에서 예외 발생: ModuleNotFoundError: No module named 'data.tree'
+[19:17:27] Traceback (most recent call last):
+  File "C:\Users\Public\Documents\ESTsoft\CreatorTemp\ipykernel_55052\3049213570.py", line 39, in debug_rst_tree_processing
+    from data.tree import RSTTree
+ModuleNotFoundError: No module named 'data.tree'
+

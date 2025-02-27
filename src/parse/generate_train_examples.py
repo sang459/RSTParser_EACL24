@@ -20,8 +20,10 @@ def generate_train_examples(
 
     return_dict = {key: [] for key in data_types}
     for doc in tqdm(dataset):
+        print(f"Generating train examples for {doc['doc_id']}...")
         examples = doc2examples(doc, corpus=corpus)
         for key in examples.keys():
+            print(f"Adding {key} examples for {doc['doc_id']}...")
             assert isinstance(examples[key], list), f"{key=}, {examples[key]=}"
             return_dict[key] += examples[key]
     assert return_dict.keys() == set(data_types)
@@ -35,20 +37,25 @@ def get_rst_tree(
     """
     Get RST tree from document.
     """
-
+    print(f"Getting RST tree for {doc['doc_id']}...")
     rst_tree: RSTTree = RSTTree.fromstring(doc["rst_tree"])
 
     if corpus in {"rstdt", "gum"}:
         rst_tree = re_categorize(rst_tree)
 
     # rel_vocab
-    assert RSTTree.check_relation(rst_tree, get_relation_vocab(corpus))
+    print(f"Checking relation vocabulary for {doc['doc_id']}...")
+    assert RSTTree.check_relation(rst_tree, get_relation_vocab(corpus)) # 여기서 걸림
 
+    print(f"Binarizing RST tree for {doc['doc_id']}...")
     rst_tree = RSTTree.binarize(rst_tree)
+
+    print(f"Converting RST tree to attach tree for {doc['doc_id']}...")
     attach_tree = RSTTree.convert_to_attach(rst_tree)
 
     # error check
     if doc["doc_id"] != "wsj_1189":
+        print(f"Setting root label for {doc['doc_id']}...")
         rst_tree.set_label("ROOT")
         assert rst_tree == AttachTree.convert_to_rst(attach_tree)
 
@@ -88,6 +95,7 @@ def generate_top_down_examples(tree: AttachTree, edus: list[str]) -> dict[str, l
     top_down_examples = []
 
     for tp in tree.treepositions():
+        print(f"Generating top-down examples for {tp}...")
         node = tree[tp]
         if not isinstance(node, AttachTree) or len(node) == 1:
             continue
@@ -118,6 +126,7 @@ def generate_top_down_example(
 
     span_text = edus[0]
     for i, edu_text in enumerate(edus[1:]):
+        print(f"Generating top-down example for {edu_text}...")
         span_text += f" [{i}] {edu_text.strip()}"
 
     input_lines = [
@@ -134,6 +143,7 @@ def generate_shift_reduce_examples(
     edus: list[str],
     corpus: Literal["rstdt", "instrdt", "gum"] = "rstdt",
 ) -> dict[str, dict]:
+    print(f"Generating shift-reduce examples for {tree.label()}...")
     data_type = ["span", "nuc", "rel", "rel-with-nuc"]
 
     examples = {k: [] for k in data_type}

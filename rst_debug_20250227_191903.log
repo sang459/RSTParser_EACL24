@@ -1,0 +1,52 @@
+[19:19:03] 디버깅 시작
+[19:19:03] 현재 작업 디렉토리: c:\Users\sang4\OneDrive\Documents\GitHub\RSTParser_EACL24
+[19:19:03] Python 경로: ['c:\\Users\\sang4\\anaconda3\\envs\\rstparser\\python313.zip', 'c:\\Users\\sang4\\anaconda3\\envs\\rstparser\\DLLs', 'c:\\Users\\sang4\\anaconda3\\envs\\rstparser\\Lib', 'c:\\Users\\sang4\\anaconda3\\envs\\rstparser', '', 'C:\\Users\\sang4\\AppData\\Roaming\\Python\\Python313\\site-packages', 'C:\\Users\\sang4\\AppData\\Roaming\\Python\\Python313\\site-packages\\win32', 'C:\\Users\\sang4\\AppData\\Roaming\\Python\\Python313\\site-packages\\win32\\lib', 'C:\\Users\\sang4\\AppData\\Roaming\\Python\\Python313\\site-packages\\Pythonwin', 'c:\\Users\\sang4\\anaconda3\\envs\\rstparser\\Lib\\site-packages', 'c:\\Users\\sang4\\OneDrive\\Documents\\GitHub\\RSTParser_EACL24\\src']
+[19:19:03] 데이터 로드 중...
+[19:19:03] 문서 wsj_1100 로드 완료
+[19:19:03] RST 트리 문자열 저장 중...
+[19:19:03] 모듈 임포트 시도...
+[19:19:10] src.data.tree에서 RSTTree 임포트 성공
+[19:19:10] RST 트리 파싱 중...
+[19:19:10] 트리 파싱 완료
+[19:19:10] 트리 위치 수: 23
+[19:19:10] 처음 10개 위치: [(), (0,), (0, 0), (0, 0, 0), (0, 0, 0, 0), (0, 0, 0, 0, 0), (0, 0, 1), (0, 0, 1, 0), (0, 0, 1, 0, 0), (0, 1)]
+[19:19:10] 
+위치 () 체크 중...
+[19:19:10] 위치 ()가 트리에 존재함
+[19:19:10] 위치 () 접근 시도 (타임아웃 5초)...
+[19:19:10] 위치 () 접근 성공
+[19:19:10] 노드 타입: <class 'src.data.tree.RSTTree'>
+[19:19:10] 레이블: ROOT
+[19:19:10] 자식 노드 수: 2
+[19:19:10] 자식 0 타입: <class 'src.data.tree.RSTTree'>
+[19:19:10] 자식 1 타입: <class 'src.data.tree.RSTTree'>
+[19:19:10] 
+위치 (0,) 체크 중...
+[19:19:10] 위치 (0,)가 트리에 존재함
+[19:19:10] 위치 (0,) 접근 시도 (타임아웃 5초)...
+[19:19:10] 위치 (0,) 접근 성공
+[19:19:10] 노드 타입: <class 'src.data.tree.RSTTree'>
+[19:19:10] 레이블: nucleus:span
+[19:19:10] 자식 노드 수: 2
+[19:19:10] 자식 0 타입: <class 'src.data.tree.RSTTree'>
+[19:19:10] 자식 1 타입: <class 'src.data.tree.RSTTree'>
+[19:19:10] 
+위치 (0, 0) 체크 중...
+[19:19:10] 위치 (0, 0)가 트리에 존재함
+[19:19:10] 위치 (0, 0) 접근 시도 (타임아웃 5초)...
+[19:19:10] 위치 (0, 0) 접근 성공
+[19:19:10] 노드 타입: <class 'src.data.tree.RSTTree'>
+[19:19:10] 레이블: nucleus:span
+[19:19:10] 자식 노드 수: 2
+[19:19:10] 자식 0 타입: <class 'src.data.tree.RSTTree'>
+[19:19:10] 자식 1 타입: <class 'src.data.tree.RSTTree'>
+[19:19:10] 
+위치 (0, 1) 체크 중...
+[19:19:10] 위치 (0, 1)가 트리에 존재함
+[19:19:10] 위치 (0, 1) 접근 시도 (타임아웃 5초)...
+[19:19:10] 위치 (0, 1) 접근 성공
+[19:19:10] 노드 타입: <class 'src.data.tree.RSTTree'>
+[19:19:10] 레이블: satellite:elaboration-additional
+[19:19:10] 자식 노드 수: 1
+[19:19:10] 자식 0 타입: <class 'src.data.tree.RSTTree'>
+[19:19:10] 디버깅 완료
